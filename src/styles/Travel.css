@@ -1,0 +1,22 @@
+html{
+    color: white;
+}
+
+.contenedorCoche{
+    margin: 5px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+
+
+.agregar{
+    width: 200px;
+    height: 200px;
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    border-radius: 10px;
+    text-align: center;
+}
+
