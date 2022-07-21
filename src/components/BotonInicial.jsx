@@ -22,7 +22,7 @@ const BotonInicial = () => {
       name: "coche_10",
       mostrar: true,
       description: "",
-      location: "localizacion",
+      location: "Localizacion",
     });
     await setDoc(doc(db, bd, "contador"), {
       number: 11,

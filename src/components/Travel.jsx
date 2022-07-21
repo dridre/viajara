@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import db from "../firebase/firebaseConfig";
 import "../styles/Travel.css";
 import Coches from "./Coches";
+import ListaPersonas from "./ListaPersonas";
 
 const bd = window.location.href.slice(-5);
 const bdPersonas = window.location.href.slice(-5) + "_personas";
@@ -70,6 +71,7 @@ const Travel = () => {
             +
           </button>
         </div>
+        <ListaPersonas />
       </div>
     )
   );
