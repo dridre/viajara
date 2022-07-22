@@ -1,4 +1,11 @@
-import { collection, onSnapshot, query, where } from "firebase/firestore";
+import {
+  collection,
+  deleteDoc,
+  onSnapshot,
+  query,
+  where,
+  doc,
+} from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import db from "../firebase/firebaseConfig";
 
@@ -31,19 +38,29 @@ const ListaPersonas = () => {
     );
   }, []);
 
+  const eliminar = async (c) => {
+    await deleteDoc(doc(db, bdPersonas, c));
+  };
+
   return (
     conCoche.length > -1 && (
       <div>
         <div>
           Con coche:
           {conCoche.map((c) => (
-            <div key={c.id}>{c.id}</div>
+            <div key={c.id}>
+              {c.id}
+              <button onClick={() => eliminar(c.id)}>X</button>
+            </div>
           ))}
         </div>
         <div>
           Sin coche:
           {sinCoche.map((c) => (
-            <div key={c.id}>{c.id}</div>
+            <div key={c.id}>
+              {c.id}
+              <button onClick={() => eliminar(c.id)}>X</button>
+            </div>
           ))}
         </div>
       </div>

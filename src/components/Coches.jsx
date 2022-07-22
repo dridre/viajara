@@ -1,6 +1,16 @@
 import { useRef, useState } from "react";
 import "../styles/Coches.css";
-import { updateDoc, doc, deleteDoc, setDoc } from "firebase/firestore";
+import {
+  updateDoc,
+  doc,
+  deleteDoc,
+  setDoc,
+  collection,
+  query,
+  where,
+  getDoc,
+  getDocs,
+} from "firebase/firestore";
 import db from "../firebase/firebaseConfig";
 import "../styles/Coches.css";
 import PersonasCoche from "./PersonasCoche";
@@ -27,9 +37,18 @@ const Coches = ({ id, name, description, location }) => {
   };
 
   const eliminar = async (id) => {
+    const q = await getDocs(
+      query(collection(db, bdPersonas), where("coche", "==", id))
+    );
+    q.forEach((docu) => {
+      updateDoc(doc(db, bdPersonas, docu.id), {
+        coche: "",
+      });
+    });
     await deleteDoc(doc(db, bd, id), {
       name: newName,
     });
+
     cambiarEditando(false);
   };
 
@@ -56,13 +75,15 @@ const Coches = ({ id, name, description, location }) => {
               placeholder={name}
               onChange={(e) => setNewName(e.target.value)}
             />
-            <input
-              type="text"
-              name="descripcion"
-              value={newDescription}
-              placeholder={description}
-              onChange={(e) => setNewDescription(e.target.value)}
-            />
+            <div>
+              <input
+                type="text"
+                name="descripcion"
+                value={newDescription}
+                placeholder={description}
+                onChange={(e) => setNewDescription(e.target.value)}
+              />
+            </div>
             <div>
               Salida:
               <input

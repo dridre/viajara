@@ -46,7 +46,7 @@ const Travel = () => {
       name: car,
       mostrar: true,
       description: "",
-      location: "localizacion",
+      location: "Localizacion",
     });
     await updateDoc(doc(db, bd, "contador"), { number: increment(1) });
     setNumCars(numCars + 1);
