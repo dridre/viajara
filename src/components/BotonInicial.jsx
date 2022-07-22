@@ -27,6 +27,12 @@ const BotonInicial = () => {
     await setDoc(doc(db, bd, "contador"), {
       number: 11,
     });
+    await setDoc(doc(db, bd, "title"), {
+      text: "Viaje a ...",
+    });
+    await setDoc(doc(db, bd, "subtitle"), {
+      text: "Descripcion del viaje",
+    });
 
     window.location.href = "/" + bd;
   };

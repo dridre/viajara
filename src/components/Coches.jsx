@@ -32,7 +32,6 @@ const Coches = ({ id, name, description, location }) => {
       const p = snapshot.docs.map((documento) => {
         return { ...documento.data(), id: documento.id };
       });
-      console.log(p);
       setLista(p);
     });
   }, []);
@@ -73,6 +72,11 @@ const Coches = ({ id, name, description, location }) => {
     e.preventDefault();
     await setDoc(doc(db, bdPersonas, persona), { coche: id });
     setPersona("");
+  };
+
+  const cocheIndividual = (id) => {
+    console.log(id);
+    window.location.href = window.location.href + "/" + id;
   };
 
   return (
@@ -132,7 +136,7 @@ const Coches = ({ id, name, description, location }) => {
             Salida:
             <button onClick={() => maps(location)}>{location}</button>
           </div>
-
+          <button onClick={() => cocheIndividual(id)}>Ir</button>
           <button onClick={() => cambiarEditando(!editando)}>Editar</button>
           <button onClick={() => eliminar(id)}>Borrar</button>
         </div>

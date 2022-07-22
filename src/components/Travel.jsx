@@ -21,6 +21,9 @@ const bdPersonas = window.location.href.slice(-5) + "_personas";
 const Travel = () => {
   const [nameCars, setNameCars] = useState([]);
   const [numCars, setNumCars] = useState();
+  const [editando, cambiarEditando] = useState(false);
+  const [titulo, setTitulo] = useState();
+  const [descripcion, setDescripcion] = useState();
 
   useEffect(() => {
     onSnapshot(
@@ -32,6 +35,12 @@ const Travel = () => {
         setNameCars(arreglo);
       }
     );
+    onSnapshot(doc(db, bd, "title"), (doc) => {
+      setTitulo(doc.data().text);
+    });
+    onSnapshot(doc(db, bd, "subtitle"), (doc) => {
+      setDescripcion(doc.data().text);
+    });
     numeroCoche();
   }, []);
 
@@ -52,9 +61,57 @@ const Travel = () => {
     setNumCars(numCars + 1);
   };
 
+  const actualizarCabecera = async (e) => {
+    e.preventDefault();
+    await updateDoc(doc(db, bd, "title"), {
+      text: titulo,
+    });
+    await updateDoc(doc(db, bd, "subtitle"), {
+      text: descripcion,
+    });
+
+    cambiarEditando(false);
+  };
+
   return (
     nameCars.length > -1 && (
       <div>
+        <div>
+          {editando ? (
+            <div>
+              <form action="" onSubmit={actualizarCabecera}>
+                <div>
+                  <input
+                    type="text"
+                    name="titulo"
+                    value={titulo}
+                    placeholder={titulo}
+                    onChange={(e) => setTitulo(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    name="descripcion"
+                    value={descripcion}
+                    placeholder={descripcion}
+                    onChange={(e) => setDescripcion(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <button type="submit">Actualizar</button>
+                </div>
+              </form>
+            </div>
+          ) : (
+            <div>
+              <div>{titulo}</div>
+              <div>{descripcion}</div>
+              <button onClick={() => cambiarEditando(!editando)}>Editar</button>
+            </div>
+          )}
+        </div>
+
         <div className="contenedorCoche">
           {nameCars.map((c) => (
             <Coches
