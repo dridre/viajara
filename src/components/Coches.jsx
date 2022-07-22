@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../styles/Coches.css";
 import {
   updateDoc,
@@ -10,6 +10,7 @@ import {
   where,
   getDoc,
   getDocs,
+  onSnapshot,
 } from "firebase/firestore";
 import db from "../firebase/firebaseConfig";
 import "../styles/Coches.css";
@@ -24,6 +25,17 @@ const Coches = ({ id, name, description, location }) => {
   const [newDescription, setNewDescription] = useState(description);
   const [newLocation, setNewLocation] = useState(location);
   const [persona, setPersona] = useState("");
+  const [lista, setLista] = useState();
+
+  useEffect(() => {
+    onSnapshot(collection(db, bdPersonas), (snapshot) => {
+      const p = snapshot.docs.map((documento) => {
+        return { ...documento.data(), id: documento.id };
+      });
+      console.log(p);
+      setLista(p);
+    });
+  }, []);
 
   const actualizar = async (e) => {
     e.preventDefault();
@@ -97,10 +109,16 @@ const Coches = ({ id, name, description, location }) => {
             <div>
               <input
                 type="text"
+                list="data"
+                onChange={(e) => setPersona(e.target.value)}
                 placeholder="Añadir persona"
                 value={persona}
-                onChange={(e) => setPersona(e.target.value)}
               />
+              <datalist id="data">
+                {lista.map((c) => (
+                  <option key={c.id} value={c.id} />
+                ))}
+              </datalist>
               <button onClick={agregarPersona}>+</button>
             </div>
           </div>
