@@ -5,6 +5,7 @@ import {
   query,
   where,
   doc,
+  setDoc,
 } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import db from "../firebase/firebaseConfig";
@@ -15,6 +16,7 @@ const bdPersonas = window.location.href.slice(-5) + "_personas";
 const ListaPersonas = () => {
   const [conCoche, setConCoche] = useState([]);
   const [sinCoche, setSinCoche] = useState([]);
+  const [persona, setPersona] = useState("");
 
   useEffect(() => {
     onSnapshot(
@@ -38,6 +40,12 @@ const ListaPersonas = () => {
     );
   }, []);
 
+  const agregarPersona = async (e) => {
+    e.preventDefault();
+    await setDoc(doc(db, bdPersonas, persona), { coche: "" });
+    setPersona("");
+  };
+
   const eliminar = async (c) => {
     await deleteDoc(doc(db, bdPersonas, c));
   };
@@ -45,6 +53,16 @@ const ListaPersonas = () => {
   return (
     conCoche.length > -1 && (
       <div>
+        <div>
+          <input
+            type="text"
+            name="persona"
+            value={persona}
+            placeholder="Añadir persona"
+            onChange={(e) => setPersona(e.target.value)}
+          />
+          <button onClick={agregarPersona}>+</button>
+        </div>
         <div>
           Con coche:
           {conCoche.map((c) => (
