@@ -64,8 +64,8 @@ const ListaPersonas = () => {
           <button onClick={agregarPersona}>+</button>
         </div>
         <div>
-          Con coche:
-          {conCoche.map((c) => (
+          Sin coche:
+          {sinCoche.map((c) => (
             <div key={c.id}>
               {c.id}
               <button onClick={() => eliminar(c.id)}>X</button>
@@ -73,8 +73,8 @@ const ListaPersonas = () => {
           ))}
         </div>
         <div>
-          Sin coche:
-          {sinCoche.map((c) => (
+          Con coche:
+          {conCoche.map((c) => (
             <div key={c.id}>
               {c.id}
               <button onClick={() => eliminar(c.id)}>X</button>

@@ -16,8 +16,10 @@ import db from "../firebase/firebaseConfig";
 import "../styles/Coches.css";
 import PersonasCoche from "./PersonasCoche";
 
-const bd = window.location.href.slice(-5);
-const bdPersonas = window.location.href.slice(-5) + "_personas";
+const string = window.location.href.split("/");
+const bd = string[3];
+const bdPersonas = bd + "_personas";
+const id = string[4];
 
 const Coches = ({ id, name, description, location }) => {
   const [editando, cambiarEditando] = useState(false);
@@ -75,7 +77,6 @@ const Coches = ({ id, name, description, location }) => {
   };
 
   const cocheIndividual = (id) => {
-    console.log(id);
     window.location.href = window.location.href + "/" + id;
   };
 
@@ -136,6 +137,7 @@ const Coches = ({ id, name, description, location }) => {
             Salida:
             <button onClick={() => maps(location)}>{location}</button>
           </div>
+
           <button onClick={() => cocheIndividual(id)}>Ir</button>
           <button onClick={() => cambiarEditando(!editando)}>Editar</button>
           <button onClick={() => eliminar(id)}>Borrar</button>

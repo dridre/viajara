@@ -120,6 +120,7 @@ const Travel = () => {
               name={c.name}
               description={c.description}
               location={c.location}
+              mostrar={true}
             />
           ))}
         </div>

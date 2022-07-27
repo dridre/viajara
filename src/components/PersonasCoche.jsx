@@ -9,7 +9,9 @@ import {
 import React, { useEffect, useState } from "react";
 import db from "../firebase/firebaseConfig";
 
-const bdPersonas = window.location.href.slice(-5) + "_personas";
+const string = window.location.href.split("/");
+const bd = string[3];
+const bdPersonas = bd + "_personas";
 
 const PersonasCoche = ({ id }) => {
   const [personas, setPersonas] = useState([]);
