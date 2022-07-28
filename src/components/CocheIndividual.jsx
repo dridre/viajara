@@ -70,76 +70,83 @@ const CocheIndividual = () => {
 
   return (
     <div>
-      {editando ? (
-        <form action="" onSubmit={actualizar}>
-          <div>
-            <input
-              type="text"
-              name="nombre"
-              value={name}
-              placeholder={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              name="descripcion"
-              value={description}
-              placeholder={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </div>
-          <div>
-            Salida:
-            <input
-              type="text"
-              name="location"
-              value={location}
-              placeholder={location}
-              onChange={(e) => setLocation(e.target.value)}
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              list="data"
-              onChange={(e) => setPersona(e.target.value)}
-              placeholder="Añadir persona"
-              value={persona}
-            />
-            <datalist id="data">
-              {lista.map((c) => (
-                <option key={c.id} value={c.id} />
-              ))}
-            </datalist>
-            <button onClick={agregarPersona}>+</button>
-          </div>
-          <button type="submit">Actualizar</button>
-        </form>
-      ) : (
-        <div>
-          <div>{name}</div>
+      <div>
+        {" "}
+        <button onClick={() => window.history.back()}>Atras</button>
+      </div>
 
-          <div>{car.description}</div>
+      <div>
+        {editando ? (
+          <form action="" onSubmit={actualizar}>
+            <div>
+              <input
+                type="text"
+                name="nombre"
+                value={name}
+                placeholder={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                name="descripcion"
+                value={description}
+                placeholder={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </div>
+            <div>
+              Salida:
+              <input
+                type="text"
+                name="location"
+                value={location}
+                placeholder={location}
+                onChange={(e) => setLocation(e.target.value)}
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                list="data"
+                onChange={(e) => setPersona(e.target.value)}
+                placeholder="Añadir persona"
+                value={persona}
+              />
+              <datalist id="data">
+                {lista.map((c) => (
+                  <option key={c.id} value={c.id} />
+                ))}
+              </datalist>
+              <button onClick={agregarPersona}>+</button>
+            </div>
+            <button type="submit">Actualizar</button>
+          </form>
+        ) : (
           <div>
-            Salida:
-            <button onClick={() => maps(car.location)}>{car.location}</button>
+            <div>{name}</div>
+
+            <div>{car.description}</div>
+            <div>
+              Salida:
+              <button onClick={() => maps(car.location)}>{car.location}</button>
+            </div>
+            <button onClick={() => cambiarEditando(!editando)}>Editar</button>
           </div>
-          <button onClick={() => cambiarEditando(!editando)}>Editar</button>
+        )}
+        <div>
+          <PersonasCoche id={id} />
         </div>
-      )}
-      <div>
-        <PersonasCoche id={id} />
-      </div>
-      <div>
-        <ListaCoche />
-      </div>
-      <div>
-        <ListaGastos />
-      </div>
-      <div>
-        <GastosTotales />
+        <div>
+          <ListaCoche />
+        </div>
+        <div>
+          <ListaGastos />
+        </div>
+        <div>
+          <GastosTotales />
+        </div>
       </div>
     </div>
   );

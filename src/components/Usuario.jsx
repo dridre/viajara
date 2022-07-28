@@ -48,6 +48,9 @@ const Usuario = () => {
 
   return (
     <div>
+      <div>
+        <button onClick={() => window.history.back()}>Atras</button>
+      </div>
       <div>Usuario: {usuario}</div>
       <div>Viajes:</div>
       <div>

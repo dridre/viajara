@@ -32,8 +32,7 @@ const Registro = () => {
     const nombre = await getDoc(doc(db, "usuarios", usuario));
     if (nombre.exists()) {
       alert("Usuario ya existe");
-    }
-    if (password !== password2) {
+    } else if (password !== password2) {
       alert("Contaseñas no coinciden");
       setPassword("");
       setPassword2("");
