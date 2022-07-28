@@ -54,7 +54,7 @@ const Cabecera = ({ donde }) => {
 
   async function añadirViaje() {
     const viaje = await getDoc(doc(db, bd, "title"));
-    const mostrar = viaje.data().text;
+    const mostrar = viaje.data().text1;
     await setDoc(doc(db, bdUsuario, bd), { mostrar: mostrar });
     setBoton(true);
   }

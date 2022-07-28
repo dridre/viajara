@@ -31,7 +31,7 @@ const BotonInicial = () => {
       number: 11,
     });
     await setDoc(doc(db, bd, "title"), {
-      text: "Viaje a ...",
+      text1: "Viaje a ...",
     });
     await setDoc(doc(db, bd, "subtitle"), {
       text: "Descripcion del viaje",

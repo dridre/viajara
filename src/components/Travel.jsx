@@ -40,7 +40,7 @@ const Travel = () => {
       }
     );
     onSnapshot(doc(db, bd, "title"), (doc) => {
-      setTitulo(doc.data().text);
+      setTitulo(doc.data().text1);
     });
     onSnapshot(doc(db, bd, "subtitle"), (doc) => {
       setDescripcion(doc.data().text);
@@ -79,10 +79,7 @@ const Travel = () => {
   const actualizarCabecera = async (e) => {
     e.preventDefault();
     await updateDoc(doc(db, bd, "title"), {
-      text: titulo,
-    });
-    await updateDoc(doc(db, bdUsuario, bd), {
-      mostrar: titulo,
+      text1: titulo,
     });
     await updateDoc(doc(db, bd, "subtitle"), {
       text: descripcion,

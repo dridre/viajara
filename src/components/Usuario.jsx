@@ -1,6 +1,6 @@
 import {
   collection,
-  getDoc,
+  getDocs,
   query,
   where,
   doc,
@@ -11,6 +11,7 @@ import {
 } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import db from "../firebase/firebaseConfig";
+import ViajesUsuario from "./ViajesUsuario";
 
 const Usuario = () => {
   const [datos, setDatos] = useState([]);
@@ -25,14 +26,9 @@ const Usuario = () => {
         const p = snapshot.docs.map((documento) => {
           return { ...documento.data(), id: documento.id };
         });
-        // console.log(p);
         setDatos(p);
       }
     );
-
-    datos.forEach((docu) => {
-      updateDoc(doc(db, bdUsuario, docu.id), { mostrar: docu.mostrar });
-    });
 
     noUsuario();
   }, []);
@@ -69,7 +65,7 @@ const Usuario = () => {
       <div>
         {datos.map((c) => (
           <div key={c.id}>
-            {c.mostrar}
+            <ViajesUsuario id={c.id} />
             <button onClick={() => ir(c)}>Ir</button>
             <button onClick={() => borrar(c)}>Borrar</button>
           </div>
