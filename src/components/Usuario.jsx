@@ -25,10 +25,15 @@ const Usuario = () => {
         const p = snapshot.docs.map((documento) => {
           return { ...documento.data(), id: documento.id };
         });
-        console.log(p);
+        // console.log(p);
         setDatos(p);
       }
     );
+
+    datos.forEach((docu) => {
+      updateDoc(doc(db, bdUsuario, docu.id), { mostrar: docu.mostrar });
+    });
+
     noUsuario();
   }, []);
 
@@ -46,10 +51,18 @@ const Usuario = () => {
     await deleteDoc(doc(db, bdUsuario, c.id));
   };
 
+  const cerrarSesion = () => {
+    localStorage.removeItem("usuario");
+    window.location.href = "/login";
+  };
+
   return (
     <div>
       <div>
         <button onClick={() => window.history.back()}>Atras</button>
+      </div>
+      <div>
+        <button onClick={() => cerrarSesion()}>Cerrar Sesion</button>
       </div>
       <div>Usuario: {usuario}</div>
       <div>Viajes:</div>

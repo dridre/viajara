@@ -26,6 +26,9 @@ const Travel = () => {
   const [titulo, setTitulo] = useState();
   const [descripcion, setDescripcion] = useState();
 
+  const usuario = localStorage.getItem("usuario");
+  const bdUsuario = "viajes_" + usuario;
+
   useEffect(() => {
     onSnapshot(
       query(collection(db, bd), where("mostrar", "==", true)),
@@ -77,6 +80,9 @@ const Travel = () => {
     e.preventDefault();
     await updateDoc(doc(db, bd, "title"), {
       text: titulo,
+    });
+    await updateDoc(doc(db, bdUsuario, bd), {
+      mostrar: titulo,
     });
     await updateDoc(doc(db, bd, "subtitle"), {
       text: descripcion,

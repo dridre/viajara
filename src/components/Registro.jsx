@@ -52,6 +52,9 @@ const Registro = () => {
 
   return (
     <div>
+      <div>
+        <button onClick={() => window.history.back()}>Atras</button>
+      </div>
       <form action="" onSubmit={registrarUsuario}>
         <div>
           <input

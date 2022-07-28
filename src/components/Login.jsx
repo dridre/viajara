@@ -47,6 +47,9 @@ const Login = () => {
 
   return (
     <div>
+      <div>
+        <button onClick={() => window.history.back()}>Atras</button>
+      </div>
       <form action="" onSubmit={login}>
         <div>
           <input

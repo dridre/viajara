@@ -71,7 +71,6 @@ const CocheIndividual = () => {
   return (
     <div>
       <div>
-        {" "}
         <button onClick={() => window.history.back()}>Atras</button>
       </div>
 
