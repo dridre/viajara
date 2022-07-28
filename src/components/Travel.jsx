@@ -12,6 +12,7 @@ import {
 import { useEffect, useState } from "react";
 import db from "../firebase/firebaseConfig";
 import "../styles/Travel.css";
+import Cabecera from "./Cabecera";
 import Coches from "./Coches";
 import ListaPersonas from "./ListaPersonas";
 
@@ -42,7 +43,18 @@ const Travel = () => {
       setDescripcion(doc.data().text);
     });
     numeroCoche();
+    existe();
   }, []);
+
+  localStorage.setItem("url", bd);
+
+  const existe = async () => {
+    const llamada = await getDoc(doc(db, bd, "title"));
+    if (llamada.exists()) {
+    } else {
+      window.location.href = window.location.href + "/error";
+    }
+  };
 
   const numeroCoche = async () => {
     const contador = await getDoc(doc(db, bd, "contador"));
@@ -76,6 +88,9 @@ const Travel = () => {
   return (
     nameCars.length > -1 && (
       <div>
+        <div>
+          <Cabecera />
+        </div>
         <div>
           {editando ? (
             <div>

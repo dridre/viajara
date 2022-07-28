@@ -6,6 +6,10 @@ import Travel from "./components/Travel";
 import Error from "./components/Error";
 import CocheIndividual from "./components/CocheIndividual";
 import Test from "./components/Test";
+import Cabecera from "./components/Cabecera";
+import Registro from "./components/Registro";
+import Login from "./components/Login";
+import Usuario from "./components/Usuario";
 
 function App() {
   return (
@@ -15,8 +19,13 @@ function App() {
           <Route path="/" exact element={<BotonInicial />} />
           <Route path="/:id" exact element={<Travel />} />
           <Route path="*" element={<Error />} />
+          <Route path="/:id/error" element={<Error />} />
+
           <Route path="/:id/:name" exact element={<CocheIndividual />} />
           <Route path="/test" exact element={<Test />} />
+          <Route path="/login" exact element={<Login />} />
+          <Route path="/registro" exact element={<Registro />} />
+          <Route path="/usuario" exact element={<Usuario />} />
         </Routes>
       </Router>
     </div>

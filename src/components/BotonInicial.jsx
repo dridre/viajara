@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/BotonInicial.css";
 import { setDoc, doc } from "firebase/firestore";
 import db from "../firebase/firebaseConfig";
+import Cabecera from "./Cabecera";
 
 const BotonInicial = () => {
   function makeid() {
@@ -14,6 +15,8 @@ const BotonInicial = () => {
     }
     return result;
   }
+
+  localStorage.setItem("url", "usuario");
 
   const bd = makeid();
 
@@ -39,9 +42,14 @@ const BotonInicial = () => {
 
   return (
     <div className="contenedorBoton">
-      <button className="botonInicial" onClick={comenzar}>
-        Nuevo viaje
-      </button>
+      <div>
+        <Cabecera donde={true} />
+      </div>
+      <div>
+        <button className="botonInicial" onClick={comenzar}>
+          Nuevo viaje
+        </button>
+      </div>
     </div>
   );
 };
