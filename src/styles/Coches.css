@@ -1,25 +1,2 @@
-html{
-    color: white;
-}
-
-.datos{
-    padding: 8px;
-    }
-
-
-
-.nombreCoche[type=text]{
-    color: white;
-    background-color: transparent;
-    border: 1px solid grey;
-    border-radius: 6px;
-    padding: 6px;
-    margin: 2px;
-font-size: 16px;
-width: 30%;
-}
-
-
-  
 
   

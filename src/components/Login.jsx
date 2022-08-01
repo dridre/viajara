@@ -10,11 +10,17 @@ import {
 } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import db from "../firebase/firebaseConfig";
+import "../styles/Login.css";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const [passwordShown, setPasswordShown] = useState(false);
   const [usuario, setUsuario] = useState("");
   const [password, setPassword] = useState("");
+
+  if (localStorage.getItem("usuario") !== null) {
+    window.history.back();
+  }
 
   const url = localStorage.getItem("url");
 
@@ -46,35 +52,55 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <div>
-        <button onClick={() => window.history.back()}>Atras</button>
+    <div className="contenedorDatosLogin">
+      <div className="atras">
+        <button
+          class="btn btn-outline-info"
+          onClick={() => window.history.back()}
+        >
+          Atras
+        </button>
       </div>
-      <form action="" onSubmit={login}>
-        <div>
-          <input
-            type="text"
-            value={usuario}
-            onChange={(e) => setUsuario(e.target.value)}
-            required
-          />
+      <form action="" onSubmit={login} className="campo">
+        <div className="usuarioContraseña">
+          <div className="usuario2">
+            <input
+              class="form-control"
+              placeholder="Usuario"
+              type="text"
+              value={usuario}
+              onChange={(e) => setUsuario(e.target.value)}
+              required
+            />
+          </div>
+          <div className="contraseña">
+            <input
+              type={passwordShown ? "text" : "password"}
+              placeholder="Contraseña"
+              class="form-control"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <button type="button" onClick={togglePassword}>
+              {passwordShown ? <FaEyeSlash /> : <FaEye />}
+            </button>
+          </div>
         </div>
-        <div>
-          <input
-            type={passwordShown ? "text" : "password"}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <button onClick={togglePassword}>Show Password</button>
-        </div>
-        <div>
-          <button type="submit">Login</button>
-        </div>
-        <div>
-          <button onClick={() => (window.location.href = "/registro")}>
-            Registro
-          </button>
+        <div className="loginRegistro">
+          <div className="login">
+            <button class="btn btn-success" type="submit">
+              Login
+            </button>
+          </div>
+          <div className="registro">
+            <button
+              class="btn btn-warning"
+              onClick={() => (window.location.href = "/registro")}
+            >
+              Registro
+            </button>
+          </div>
         </div>
       </form>
     </div>

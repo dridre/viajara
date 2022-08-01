@@ -1,0 +1,42 @@
+.campo{
+    border: solid;
+  border-radius: 15px;
+    background-color: rgb(29, 29, 29) ;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.atras{
+    margin-top: 10px;
+    margin-left: 5%;
+}
+
+.usuario2{
+    margin: 20px;
+}
+.contraseña{
+    display: flex;
+    margin: 20px;
+}
+
+.loginRegistro{
+    display: flex;
+    margin: 20px;
+}
+
+.login{
+margin-left: 10px;
+margin-right: 10px;
+}
+
+.registro{
+margin-left: 10px;
+margin-right: 10px;
+
+}

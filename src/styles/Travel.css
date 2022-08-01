@@ -1,22 +1,49 @@
-html{
-    color: white;
+.nombreViaje{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 20px;
+    min-height: 150px;
 }
 
-.contenedorCoche{
-    margin: 5px;
-    border: 1px solid white;
-    border-radius: 10px;
+.tituloDescripcion{
+    display: flex;
+    justify-content: space-between;
+}
+
+.botonEditar{
+    background-color: yellow;
+    border-radius: 5px;
+ height: 30px;
+
+}
+.botonEditar:hover{
+    opacity: 0.8;
+}
+
+.botonActualizar{
+    background-color: green;
+    border-radius: 5px;
+   height: 30px;
+}
+
+.botonActualizar:hover{
+    opacity: 0.8;
+}
+
+.editarNombreViaje{ 
+    display: flex;
+    justify-content: space-between;
+}
+
+.editarTituloDescripcion{
+    width: 90%;
+}
+
+.editarTitulo{
+      margin-bottom: 10px;
 }
 
 
-
-.agregar{
-    width: 200px;
-    height: 200px;
-    background-color: black;
-    color: white;
-    border: 1px solid white;
-    border-radius: 10px;
-    text-align: center;
+.textoDescripcion{
+    white-space: pre-wrap
 }
-

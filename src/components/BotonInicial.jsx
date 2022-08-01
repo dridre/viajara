@@ -41,12 +41,16 @@ const BotonInicial = () => {
   };
 
   return (
-    <div className="contenedorBoton">
+    <div>
       <div>
         <Cabecera donde={true} />
       </div>
-      <div>
-        <button className="botonInicial" onClick={comenzar}>
+      <div className="contenedor">
+        <button
+          className="botonInicial"
+          class="btn btn-info"
+          onClick={comenzar}
+        >
           Nuevo viaje
         </button>
       </div>

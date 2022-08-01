@@ -1,5 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import BotonInicial from "./components/BotonInicial";
 import Travel from "./components/Travel";
@@ -20,7 +21,6 @@ function App() {
           <Route path="/:id" exact element={<Travel />} />
           <Route path="*" element={<Error />} />
           <Route path="/:id/error" element={<Error />} />
-
           <Route path="/:id/:name" exact element={<CocheIndividual />} />
           <Route path="/test" exact element={<Test />} />
           <Route path="/login" exact element={<Login />} />

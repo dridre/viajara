@@ -10,6 +10,8 @@ import {
 } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import db from "../firebase/firebaseConfig";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+
 const Registro = () => {
   const [passwordShown, setPasswordShown] = useState(false);
   const [passwordShown2, setPasswordShown2] = useState(false);
@@ -52,40 +54,69 @@ const Registro = () => {
 
   return (
     <div>
-      <div>
-        <button onClick={() => window.history.back()}>Atras</button>
+      <div className="atras">
+        <button
+          class="btn btn-outline-info"
+          onClick={() => window.history.back()}
+        >
+          Atras
+        </button>
       </div>
-      <form action="" onSubmit={registrarUsuario}>
-        <div>
-          <input
-            type="text"
-            onChange={(e) => setUsuario(e.target.value)}
-            required
-          />
+      <form action="" onSubmit={registrarUsuario} className="campo">
+        <div className="usuarioContraseña">
+          <div className="usuario2">
+            <input
+              placeholder="Usuario"
+              class="form-control"
+              type="text"
+              onChange={(e) => setUsuario(e.target.value)}
+              required
+            />
+          </div>
+          <div className="contraseña">
+            <input
+              placeholder="Cotraseña"
+              class="form-control"
+              type={passwordShown ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <button type="button" onClick={togglePassword}>
+              {passwordShown ? <FaEyeSlash /> : <FaEye />}
+            </button>
+          </div>
+          <div className="contraseña">
+            <input
+              placeholder="Repetir contraseña"
+              class="form-control"
+              type={passwordShown2 ? "text" : "password"}
+              value={password2}
+              onChange={(e) => setPassword2(e.target.value)}
+              required
+            />
+            <button type="button" onClick={togglePassword2}>
+              {passwordShown2 ? <FaEyeSlash /> : <FaEye />}
+            </button>
+          </div>
         </div>
-        <div>
-          <input
-            type={passwordShown ? "text" : "password"}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <button onClick={togglePassword}>Show Password</button>
+
+        <div className="loginRegistro">
+          <div className="login">
+            <button
+              class="btn btn-primary"
+              onClick={() => (window.location.href = "/login")}
+            >
+              Login
+            </button>
+          </div>
+          <div className="registro">
+            <button class="btn btn-success" type="submit">
+              Registrar
+            </button>
+          </div>
         </div>
-        <div>
-          <input
-            type={passwordShown2 ? "text" : "password"}
-            value={password2}
-            onChange={(e) => setPassword2(e.target.value)}
-            required
-          />
-          <button onClick={togglePassword2}>Show Password</button>
-        </div>
-        <button type="submit">Registrar</button>
       </form>
-      <div>
-        <button onClick={() => (window.location.href = "/login")}>Login</button>
-      </div>
     </div>
   );
 };

@@ -1,11 +1,9 @@
-html {
-  background-color: black;
-}
 
-.contenedorBoton {
+
+.contenedor {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  min-height: 90vh;
+  min-height: 80vh;
 }

@@ -1,3 +1,42 @@
 html{
     color:white
 }
+
+.contenedorCabecera{
+    margin-top: 10px;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.contenedorUsuario{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.btn-outline-warning{
+    margin-left: 5px;
+}
+
+.añadirViaje{
+    margin-left: 10px;
+    
+}
+
+.contenedorUsuarioCerrarSesion{
+    display: flex;
+    justify-content: space-between;
+}
+
+.contenedorLogin{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.botonLogin{
+    margin-left: 10px;
+}
+
+.btn-1{
+    --bs-btn-color: var(--bs-orange);
+}

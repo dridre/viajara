@@ -1,23 +1,14 @@
-html {
-    background-color: black;
-}
 
-.botonInicial {
+
+.btn-info {
     width: 250px;
     height: 80px;
-    background-color: purple;
     font-size: 35px;
-    font-family: sans-serif;
-    font-weight: bold;
-    color: black;
-    border: none;
-    border-radius: 5px;
-    ;
-    cursor: pointer;
     transition: all .3s;
+
 }
 
-.botonInicial:hover {
+.btn-info:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 20px purple;
+    box-shadow: 0 0 20px #9933cc;
 }

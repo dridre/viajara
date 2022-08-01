@@ -60,19 +60,31 @@ const Cabecera = ({ donde }) => {
   }
 
   return (
-    <div>
+    <div className="contenedorCabecera">
       {existe ? (
-        <div>
-          <div>
+        <div className="contenedorUsuarioCerrarSesion">
+          <div className="contenedorUsuario">
+            <div className="usuario">
+              Usuario:
+              <button
+                class="btn btn-outline-warning"
+                onClick={() => {
+                  window.location.href = "/usuario";
+                }}
+              >
+                {usuario}
+              </button>
+            </div>
             {donde ? (
               <div></div>
             ) : (
-              <div>
+              <div className="añadirViaje">
                 {boton ? (
-                  <div></div>
+                  <div class="text-secondary">Viaje añadido!</div>
                 ) : (
                   <div>
                     <button
+                      class="btn btn-success"
                       onClick={() => {
                         añadirViaje();
                       }}
@@ -84,25 +96,25 @@ const Cabecera = ({ donde }) => {
               </div>
             )}
           </div>
-          Usuario:{" "}
-          <button
-            onClick={() => {
-              window.location.href = "/usuario";
-            }}
-          >
-            {usuario}
-          </button>
-          <div>
-            <button onClick={() => cerrarSesion()}>Cerrar Sesion</button>
+          <div className="cerrarSesion">
+            <button class="btn btn-danger" onClick={() => cerrarSesion()}>
+              Cerrar Sesion
+            </button>
           </div>
         </div>
       ) : (
         <div>
-          <div>
-            <button onClick={() => Login()}>Login</button>
-          </div>
-          <div>
-            <button onClick={() => Registro()}>Registro</button>
+          <div className="contenedorLogin">
+            <div className="botonLogin">
+              <button class="btn btn-primary" onClick={() => Login()}>
+                Login
+              </button>
+            </div>
+            <div className="botonLogin">
+              <button class="btn btn-warning" onClick={() => Registro()}>
+                Registro
+              </button>
+            </div>
           </div>
         </div>
       )}

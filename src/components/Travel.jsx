@@ -15,6 +15,7 @@ import "../styles/Travel.css";
 import Cabecera from "./Cabecera";
 import Coches from "./Coches";
 import ListaPersonas from "./ListaPersonas";
+import { FaPen, FaCheck } from "react-icons/fa";
 
 const bd = window.location.href.slice(-5);
 const bdPersonas = window.location.href.slice(-5) + "_personas";
@@ -94,38 +95,56 @@ const Travel = () => {
         <div>
           <Cabecera />
         </div>
-        <div>
+        <div className="nombreViaje">
           {editando ? (
             <div>
-              <form action="" onSubmit={actualizarCabecera}>
-                <div>
-                  <input
-                    type="text"
-                    name="titulo"
-                    value={titulo}
-                    placeholder={titulo}
-                    onChange={(e) => setTitulo(e.target.value)}
-                  />
+              <form
+                className="editarNombreViaje"
+                action=""
+                onSubmit={actualizarCabecera}
+              >
+                <div className="editarTituloDescripcion">
+                  <div className="editarTitulo">
+                    <input
+                      class="form-control"
+                      type="text"
+                      name="titulo"
+                      value={titulo}
+                      placeholder="Titulo del viaje"
+                      onChange={(e) => setTitulo(e.target.value)}
+                    />
+                  </div>
+                  <div className="editarDescripcion">
+                    <textarea
+                      class="form-control"
+                      rows="6"
+                      type="text"
+                      name="descripcion"
+                      value={descripcion}
+                      placeholder="Descripcion del viaje"
+                      onChange={(e) => setDescripcion(e.target.value)}
+                    />
+                  </div>
                 </div>
                 <div>
-                  <input
-                    type="text"
-                    name="descripcion"
-                    value={descripcion}
-                    placeholder={descripcion}
-                    onChange={(e) => setDescripcion(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <button type="submit">Actualizar</button>
+                  <button className="botonActualizar" type="submit">
+                    <FaCheck />
+                  </button>
                 </div>
               </form>
             </div>
           ) : (
-            <div>
-              <div>{titulo}</div>
-              <div>{descripcion}</div>
-              <button onClick={() => cambiarEditando(!editando)}>Editar</button>
+            <div className="tituloDescripcion">
+              <div>
+                <h1>{titulo}</h1>
+                <h6 className="textoDescripcion">{descripcion}</h6>
+              </div>
+              <button
+                className="botonEditar"
+                onClick={() => cambiarEditando(!editando)}
+              >
+                <FaPen />
+              </button>
             </div>
           )}
         </div>

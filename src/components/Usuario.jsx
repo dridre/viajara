@@ -12,11 +12,14 @@ import {
 import React, { useEffect, useState } from "react";
 import db from "../firebase/firebaseConfig";
 import ViajesUsuario from "./ViajesUsuario";
+import "../styles/Usuario.css";
+import { FaWindowClose } from "react-icons/fa";
 
 const Usuario = () => {
   const [datos, setDatos] = useState([]);
 
   const usuario = localStorage.getItem("usuario");
+  const url = localStorage.getItem("url");
   const bdUsuario = "viajes_" + usuario;
 
   useEffect(() => {
@@ -49,25 +52,58 @@ const Usuario = () => {
 
   const cerrarSesion = () => {
     localStorage.removeItem("usuario");
-    window.location.href = "/login";
+    if (url === "usuario") {
+      window.location.href = "/";
+    } else {
+      window.history.back();
+    }
+  };
+
+  const atras = () => {
+    if (url === "usuario") {
+      window.location.href = "/";
+    } else {
+      window.history.back();
+    }
   };
 
   return (
     <div>
-      <div>
-        <button onClick={() => window.history.back()}>Atras</button>
+      <div className="atrasCerrarSesion">
+        <div>
+          <button class="btn btn-outline-info" onClick={() => atras()}>
+            Atras
+          </button>
+        </div>
+        <div>
+          <button class="btn btn-danger" onClick={() => cerrarSesion()}>
+            Cerrar Sesion
+          </button>
+        </div>
       </div>
-      <div>
-        <button onClick={() => cerrarSesion()}>Cerrar Sesion</button>
+      <div className="usuarioViajes">
+        <div>Usuario: {usuario}</div>
+        <div>Viajes:</div>
       </div>
-      <div>Usuario: {usuario}</div>
-      <div>Viajes:</div>
-      <div>
+      <div className="info">
         {datos.map((c) => (
-          <div key={c.id}>
+          <div key={c.id} className="viaje">
             <ViajesUsuario id={c.id} />
-            <button onClick={() => ir(c)}>Ir</button>
-            <button onClick={() => borrar(c)}>Borrar</button>
+            <div className="irBorrar">
+              <div className="ir">
+                <button class="btn btn-outline-warning" onClick={() => ir(c)}>
+                  Ir
+                </button>
+              </div>
+              <div>
+                <button
+                  class="btn btn-outline-danger"
+                  onClick={() => borrar(c)}
+                >
+                  Borrar
+                </button>
+              </div>
+            </div>
           </div>
         ))}
       </div>
