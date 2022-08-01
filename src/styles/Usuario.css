@@ -1,0 +1,40 @@
+.atrasCerrarSesion{
+    display: flex;
+    margin-top: 10px;
+    margin-right: 5%;
+    margin-left: 5%;
+ justify-content: space-between;   
+}
+
+.usuarioViajes{
+    margin-top: 20px;
+    margin-left: 10%;
+    
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-left: 15%;
+    margin-right: 15%;
+   
+}
+
+.viaje{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    justify-content: space-between;
+    border-bottom: 1px solid grey;
+}
+
+.irBorrar{
+    display: flex;
+}
+
+.ir{
+    margin-right: 5px;
+}
+
