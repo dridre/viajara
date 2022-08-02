@@ -13,7 +13,6 @@ import React, { useEffect, useState } from "react";
 import db from "../firebase/firebaseConfig";
 import ViajesUsuario from "./ViajesUsuario";
 import "../styles/Usuario.css";
-import { FaWindowClose } from "react-icons/fa";
 
 const Usuario = () => {
   const [datos, setDatos] = useState([]);
@@ -77,7 +76,7 @@ const Usuario = () => {
         </div>
         <div>
           <button class="btn btn-danger" onClick={() => cerrarSesion()}>
-            Cerrar Sesion
+            Salir
           </button>
         </div>
       </div>

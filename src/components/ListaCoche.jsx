@@ -12,6 +12,7 @@ import {
   increment,
 } from "firebase/firestore";
 import db from "../firebase/firebaseConfig";
+import { FaPlus } from "react-icons/fa";
 
 const string = window.location.href.split("/");
 const bd = string[3];
@@ -93,30 +94,46 @@ const ListaCoche = () => {
   return (
     personas.length > 0 && (
       <div>
-        <form action="" onSubmit={añadirGasto}>
-          <select value={nombre} onChange={(e) => setNombre(e.target.value)}>
-            <option value="----">----</option>
-            {personas.map((c) => (
-              <option key={c.id} value={c.id}>
-                {c.id}
-              </option>
-            ))}
-          </select>
-          <input
-            type="text"
-            placeholder="Descripcion"
-            value={descripcion}
-            onChange={(e) => setDescripcion(e.target.value)}
-            required
-          />
-          <input
-            type="number"
-            placeholder="€"
-            value={precio}
-            onChange={(e) => setPrecio(e.target.value)}
-            required
-          />
-          <button type="submit">+</button>
+        <form className="gastosCoche" action="" onSubmit={añadirGasto}>
+          <div className="select">
+            <select
+              class="form-select"
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
+            >
+              <option value="----">----</option>
+              {personas.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {c.id}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="descripcionGastos">
+            <div className="descripcionListaCoche">
+              <input
+                class="form-control"
+                type="text"
+                placeholder="Descripcion"
+                value={descripcion}
+                onChange={(e) => setDescripcion(e.target.value)}
+                required
+              />
+            </div>
+            <div className="gastoListaCoche">
+              <input
+                class="form-control"
+                type="number"
+                placeholder="€"
+                value={precio}
+                onChange={(e) => setPrecio(e.target.value)}
+                required
+              />
+            </div>
+            <button className="botonActualizar" type="submit">
+              <FaPlus />
+            </button>
+          </div>
         </form>
       </div>
     )

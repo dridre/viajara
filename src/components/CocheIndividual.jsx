@@ -15,6 +15,15 @@ import PersonasCoche from "./PersonasCoche";
 import ListaCoche from "./ListaCoche";
 import ListaGastos from "./ListaGastos";
 import GastosTotales from "./GastosTotales";
+import "../styles/Travel.css";
+import {
+  FaCarSide,
+  FaPen,
+  FaCheck,
+  FaTrashAlt,
+  FaUserPlus,
+  FaWindowClose,
+} from "react-icons/fa";
 
 const string = window.location.href.split("/");
 const bd = string[3];
@@ -70,81 +79,142 @@ const CocheIndividual = () => {
 
   return (
     <div>
-      <div>
-        <button onClick={() => window.history.back()}>Atras</button>
+      <div className="atrasCerrarSesion">
+        <button
+          class="btn btn-outline-info"
+          onClick={() => window.history.back()}
+        >
+          Atras
+        </button>
       </div>
+      <div className="informacion">
+        <div className="contenedorCoche">
+          <div className="contenedorDatos">
+            <div className="datosCoche">
+              {editando ? (
+                <form
+                  action=""
+                  onSubmit={actualizar}
+                  className="editarDatosCoche"
+                >
+                  <div className="datosEditar">
+                    <div className="editarNombreCoche">
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="nombre"
+                        value={name}
+                        placeholder="Nombre del coche"
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                    </div>
+                    <div className="editarDescripcionCoche">
+                      <textarea
+                        rows={4}
+                        class="form-control"
+                        type="text"
+                        name="descripcion"
+                        value={description}
+                        placeholder="Descripcion del coche"
+                        onChange={(e) => setDescription(e.target.value)}
+                      />
+                    </div>
+                    <div className="editarSalidaCoche">
+                      Salida:&nbsp;
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="location"
+                        value={location}
+                        placeholder={location}
+                        onChange={(e) => setLocation(e.target.value)}
+                      />
+                    </div>
+                    <div className="añadirPersona">
+                      <div className="textoPersona">
+                        <input
+                          class="form-control"
+                          type="text"
+                          list="data"
+                          onChange={(e) => setPersona(e.target.value)}
+                          placeholder="Añadir persona"
+                          value={persona}
+                        />
+                        <datalist id="data">
+                          {lista.map((c) => (
+                            <option key={c.id} value={c.id} />
+                          ))}
+                        </datalist>
+                      </div>
+                      <div>
+                        <button
+                          className="botonAgregarPersona"
+                          onClick={agregarPersona}
+                        >
+                          <FaUserPlus />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="botonesCoche">
+                    <button className="botonActualizar" type="submit">
+                      <FaCheck />
+                    </button>
+                    <button
+                      className="botonBorrar"
+                      onClick={() => {
+                        cambiarEditando(false);
+                      }}
+                    >
+                      <FaWindowClose />
+                    </button>
+                  </div>
+                </form>
+              ) : (
+                <div className="datosActualizados">
+                  <div className="nombreDescripcionLocalizacion">
+                    <h6 class="text-warning">
+                      <strong>{name}</strong>
+                    </h6>
+                    <h6 className="textoDescripcionCoche">{car.description}</h6>
+                    <div>
+                      Salida:&nbsp;
+                      <button
+                        class="btn btn-outline-dark"
+                        onClick={() => maps(car.location)}
+                      >
+                        {car.location}
+                      </button>
+                    </div>
+                  </div>
+                  <div className="botonesCoche">
+                    <button
+                      className="botonEditar"
+                      onClick={() => cambiarEditando(!editando)}
+                    >
+                      {" "}
+                      <FaPen />
+                    </button>
+                  </div>
+                </div>
+              )}
 
-      <div>
-        {editando ? (
-          <form action="" onSubmit={actualizar}>
-            <div>
-              <input
-                type="text"
-                name="nombre"
-                value={name}
-                placeholder={name}
-                onChange={(e) => setName(e.target.value)}
-              />
+              <div>
+                <PersonasCoche id={id} />
+              </div>
             </div>
-            <div>
-              <input
-                type="text"
-                name="descripcion"
-                value={description}
-                placeholder={description}
-                onChange={(e) => setDescription(e.target.value)}
-              />
-            </div>
-            <div>
-              Salida:
-              <input
-                type="text"
-                name="location"
-                value={location}
-                placeholder={location}
-                onChange={(e) => setLocation(e.target.value)}
-              />
-            </div>
-            <div>
-              <input
-                type="text"
-                list="data"
-                onChange={(e) => setPersona(e.target.value)}
-                placeholder="Añadir persona"
-                value={persona}
-              />
-              <datalist id="data">
-                {lista.map((c) => (
-                  <option key={c.id} value={c.id} />
-                ))}
-              </datalist>
-              <button onClick={agregarPersona}>+</button>
-            </div>
-            <button type="submit">Actualizar</button>
-          </form>
-        ) : (
-          <div>
-            <div>{name}</div>
-
-            <div>{car.description}</div>
-            <div>
-              Salida:
-              <button onClick={() => maps(car.location)}>{car.location}</button>
-            </div>
-            <button onClick={() => cambiarEditando(!editando)}>Editar</button>
           </div>
-        )}
-        <div>
-          <PersonasCoche id={id} />
         </div>
-        <div>
-          <ListaCoche />
-        </div>
-        <div>
-          <ListaGastos />
-        </div>
-        <div>
-          <GastosTotales />
+        <div className="gastosVarios">
+          <div>
+            <ListaCoche />
+          </div>
+          <div>
+            <ListaGastos />
+          </div>
+          <div>
+            <GastosTotales />
+          </div>
         </div>
       </div>
     </div>

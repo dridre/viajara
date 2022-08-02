@@ -37,21 +37,24 @@ const PersonasCoche = ({ id }) => {
 
   return (
     personas.length > -1 && (
-      <div>
+      <div className="contenedorPersonasCoche">
         <div>
           Personas a bordo:
-          {personas.map((c) => (
-            <button
-              key={c.id}
-              value={c.id}
-              onClick={() => setValor(c.id)}
-              onDoubleClick={() => {
-                quitarCoche();
-              }}
-            >
-              {c.id}
-            </button>
-          ))}
+          <div className="personasCoche">
+            {personas.map((c) => (
+              <button
+                class="btn btn-outline-info personas"
+                key={c.id}
+                value={c.id}
+                onClick={() => setValor(c.id)}
+                onDoubleClick={() => {
+                  quitarCoche();
+                }}
+              >
+                {c.id}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     )

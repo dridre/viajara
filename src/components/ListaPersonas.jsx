@@ -9,6 +9,7 @@ import {
 } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import db from "../firebase/firebaseConfig";
+import { FaUserPlus, FaTrashAlt } from "react-icons/fa";
 
 const bd = window.location.href.slice(-5);
 const bdPersonas = window.location.href.slice(-5) + "_personas";
@@ -52,34 +53,43 @@ const ListaPersonas = () => {
 
   return (
     conCoche.length > -1 && (
-      <div>
-        <div>
-          <input
-            type="text"
-            name="persona"
-            value={persona}
-            placeholder="Añadir persona"
-            onChange={(e) => setPersona(e.target.value)}
-          />
-          <button onClick={agregarPersona}>+</button>
-        </div>
-        <div>
-          Sin coche:
-          {sinCoche.map((c) => (
-            <div key={c.id}>
-              {c.id}
-              <button onClick={() => eliminar(c.id)}>X</button>
-            </div>
-          ))}
-        </div>
-        <div>
-          Con coche:
-          {conCoche.map((c) => (
-            <div key={c.id}>
-              {c.id}
-              <button onClick={() => eliminar(c.id)}>X</button>
-            </div>
-          ))}
+      <div className="listaPersonas">
+        <div className="tododentro">
+          <div className="inputAñadirPersona">
+            <input
+              class="form-control"
+              type="text"
+              name="persona"
+              value={persona}
+              placeholder="Añadir persona"
+              onChange={(e) => setPersona(e.target.value)}
+            />
+            <button className="botonAgregarPersona" onClick={agregarPersona}>
+              <FaUserPlus />
+            </button>
+          </div>
+          <div className="listaCoche">
+            <h5> Sin coche:</h5>
+            {sinCoche.map((c) => (
+              <div class="text-danger" key={c.id}>
+                {c.id}
+                <button className="botonBorrar" onClick={() => eliminar(c.id)}>
+                  <FaTrashAlt />
+                </button>
+              </div>
+            ))}
+          </div>
+          <div className="listaCoche">
+            <h5> Con coche:</h5>
+            {conCoche.map((c) => (
+              <div class="text-success" key={c.id}>
+                {c.id}
+                <button className="botonBorrar" onClick={() => eliminar(c.id)}>
+                  <FaTrashAlt />
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     )

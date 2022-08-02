@@ -19,7 +19,7 @@ html{
 }
 
 .añadirViaje{
-    margin-left: 10px;
+    margin-left: 5px;
     
 }
 
@@ -40,3 +40,8 @@ html{
 .btn-1{
     --bs-btn-color: var(--bs-orange);
 }
+
+.cerrarSesion{
+    margin-left: 5px;
+}
+

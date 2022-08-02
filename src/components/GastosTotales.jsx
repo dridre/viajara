@@ -37,10 +37,20 @@ const DivisionGastos = () => {
 
   return (
     gastos.length > 0 && (
-      <div>
+      <div className="gastosTotales">
         {gastos.map((c) => (
           <div key={c.id} value={c.id}>
-            {c.id} {c.pagado} €
+            {c.id != "Total" ? (
+              <div className="gastoPorPersona">
+                <div class="text-info">{c.id}</div>
+                <div class="text-primary"> {c.pagado} €</div>
+              </div>
+            ) : (
+              <div className="gastoPorPersona">
+                <div class="text-warning">{c.id}</div>
+                <div class="text-warning"> {c.pagado} €</div>
+              </div>
+            )}
           </div>
         ))}
       </div>

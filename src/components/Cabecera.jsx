@@ -89,7 +89,7 @@ const Cabecera = ({ donde }) => {
                         añadirViaje();
                       }}
                     >
-                      Añadir Viaje
+                      Añadir
                     </button>
                   </div>
                 )}
@@ -98,7 +98,7 @@ const Cabecera = ({ donde }) => {
           </div>
           <div className="cerrarSesion">
             <button class="btn btn-danger" onClick={() => cerrarSesion()}>
-              Cerrar Sesion
+              Salir
             </button>
           </div>
         </div>

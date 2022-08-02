@@ -95,6 +95,7 @@ const Travel = () => {
         <div>
           <Cabecera />
         </div>
+
         <div className="nombreViaje">
           {editando ? (
             <div>
@@ -149,22 +150,24 @@ const Travel = () => {
           )}
         </div>
 
-        <div className="contenedorCoche">
-          {nameCars.map((c) => (
-            <Coches
-              key={c.id}
-              id={c.id}
-              name={c.name}
-              description={c.description}
-              location={c.location}
-              mostrar={true}
-            />
-          ))}
-        </div>
-        <div>
-          <button className="agregar" onClick={() => agregarCoche()}>
-            +
-          </button>
+        <div className="informacion">
+          <div className="contenedorCoche">
+            {nameCars.map((c) => (
+              <Coches
+                key={c.id}
+                id={c.id}
+                name={c.name}
+                description={c.description}
+                location={c.location}
+                mostrar={true}
+              />
+            ))}
+          </div>
+          <div className="botonAgregarCoche">
+            <button className="agregar" onClick={() => agregarCoche()}>
+              +
+            </button>
+          </div>
         </div>
         <ListaPersonas />
       </div>

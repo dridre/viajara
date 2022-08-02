@@ -13,6 +13,8 @@ import {
 } from "firebase/firestore";
 import db from "../firebase/firebaseConfig";
 
+import { FaTrashAlt } from "react-icons/fa";
+
 const string = window.location.href.split("/");
 const bd = string[3];
 const bdPersonas = bd + "_personas";
@@ -45,14 +47,18 @@ const ListaGastos = () => {
   };
 
   return (
-    <div>
-      Lista de gastos:
+    <div className="listaGastos">
+      <h5>Lista de gastos:</h5>
       {lista.map((c) => (
-        <div key={c.id}>
-          <div>{c.nombre}</div>
-          <div>{c.descripcion}</div>
-          <div>{c.precio} €</div>
-          <button onClick={() => eliminar(c)}>X</button>
+        <div className="mapGastos" key={c.id}>
+          <div class="text-info">{c.nombre}</div>
+          <div class="text-secundary">{c.descripcion}</div>
+          <div className="gastoMasBoton">
+            <div class="text-primary">{c.precio} €&nbsp;&nbsp;</div>
+            <button className="botonBorrar" onClick={() => eliminar(c)}>
+              <FaTrashAlt />
+            </button>
+          </div>
         </div>
       ))}
     </div>

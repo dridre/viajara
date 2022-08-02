@@ -2,8 +2,8 @@
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 20px;
-    min-height: 150px;
-}
+    margin-bottom: 20px;
+    }
 
 .tituloDescripcion{
     display: flex;
@@ -14,6 +14,8 @@
     background-color: yellow;
     border-radius: 5px;
  height: 30px;
+ border: none;
+ margin-bottom: 2px;
 
 }
 .botonEditar:hover{
@@ -24,6 +26,8 @@
     background-color: green;
     border-radius: 5px;
    height: 30px;
+   border: none;
+   margin-bottom: 2px;
 }
 
 .botonActualizar:hover{
@@ -33,10 +37,11 @@
 .editarNombreViaje{ 
     display: flex;
     justify-content: space-between;
+    margin-bottom: 2%;
 }
 
 .editarTituloDescripcion{
-    width: 90%;
+    width: 85%;
 }
 
 .editarTitulo{
@@ -47,3 +52,282 @@
 .textoDescripcion{
     white-space: pre-wrap
 }
+
+.contenedorCoche{
+max-width: 900px;
+width: 90%
+    
+}
+
+.contenedorDatos{
+    border: 2px solid grey;
+    margin-bottom: 20px;
+}
+
+.datosCoche{
+    margin: 2%;
+
+}
+
+.datosActualizados{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.botonesCoche{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.botonIr{
+background-color: #2a9fd6;
+border-radius: 5px;
+height: 30px;
+border: none;
+margin-bottom: 2px;
+}
+
+.botonIr:hover{
+    opacity: 0.8;
+}
+
+.botonBorrar{
+    background-color: red;
+    border-radius: 5px;
+    height: 30px;
+    border: none;
+    margin-bottom: 2px;
+}
+
+.botonBorrar:hover{
+    opacity: 0.8;
+}
+
+.contenedorPersonasCoche{
+    margin-top: 1%;
+}
+
+.personasCoche{
+    margin-left: 1%;
+     display: flex;
+      flex-wrap: wrap;
+    justify-content: flex-start;    
+}
+
+.personas{
+    margin-left: 1%;
+    margin-top: 1%;
+    width: fit-content;
+}
+
+.textoDescripcionCoche{
+    margin-left: 5%;
+    margin-right: 5%;
+    white-space: pre-wrap;
+    width: fit-content;
+}
+.editarDatosCoche{
+ display: flex;
+ justify-content: space-between;
+ 
+}
+
+.datosEditar{
+       width: 85%;
+}
+
+.editarNombreCoche{
+    margin-bottom: 2%;
+}
+.editarDescripcionCoche{
+    margin-bottom: 2%;
+
+}
+.editarSalidaCoche{
+    margin-bottom: 2%;
+align-items: center;
+    display: flex;
+}
+
+.añadirPersona{
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+   }
+
+ .textoPersona{
+width: 90%;
+ }
+
+ .botonAgregarPersona{
+    background-color: #2a9fd6;
+    border-radius: 5px;
+    height: 30px;
+    margin-left: 3px;
+    border: none;
+ }
+    
+.botonAgregarPersona:hover{
+    opacity: 0.8;
+}
+
+.botonAgregarCoche{
+border: 2px solid grey;
+width: 90%;
+max-width: 900px;
+
+
+}
+
+.informacion{
+    display: flex;
+    flex-direction: column;
+
+   align-items: center;
+   margin-bottom: 20px;
+
+   }
+
+.agregar{
+ width: 100%;
+ height: 120px;
+ color: white;
+ background-color: transparent;
+ font-size: 200%;
+ border: none;
+}
+
+.listaPersonas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+padding-bottom: 10px;
+margin-bottom: 10px;
+
+}
+
+.inputAñadirPersona{
+    display: flex;
+    align-items: center;
+    width: 60%;
+    margin-top: 10px;
+}
+
+.listaCoche{
+    margin-top: 2px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+}
+.text-danger{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 250px;
+    padding-bottom: 2px;
+    margin-bottom: 2px;
+    border-bottom: 1px solid grey;
+}
+
+.text-success{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 250px;
+    padding-bottom: 2px;
+    margin-bottom: 2px;
+    border-bottom: 1px solid grey;
+}
+
+.tododentro{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 900px;
+    border: 2px solid grey;
+    align-items: center;
+
+}
+
+.gastosCoche{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .select{
+    width: 90%;
+    margin-bottom: 2px;
+  }
+
+  .descripcionGastos{
+    display: flex;
+    align-items: center;
+   width: 90%;
+  }
+
+  .descripcionListaCoche{
+    margin-right: 1px;
+  }
+
+  .gastoListaCoche{
+    margin-left: 1px;
+    margin-right: 2px;
+  }
+
+  .listaGastos{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mapGastos{
+    display: flex;
+    align-items: center;
+justify-content: space-between;
+flex-grow: 3;
+    width: 300px;
+    border-bottom: 2px solid grey;
+ margin-bottom: 2px;
+  }
+  
+  .gastoMasBoton{
+    display: flex;
+    align-items: center;
+  }
+
+  .gastosTotales{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+border: 2px solid grey;
+margin-top: 20px;
+padding: 2px;
+  }
+
+  .gastoPorPersona{
+   
+    display: flex;
+    justify-content: space-between;
+width: 150px;
+  }
+
+  .gastosVarios{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+border: 2px solid grey;
+padding: 10px;
+max-width: 900px;
+width: 90%;
+  }
+  
